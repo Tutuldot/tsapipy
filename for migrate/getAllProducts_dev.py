@@ -47,7 +47,7 @@ def generate_sha256(input_str: str, secret: str) -> str:
     return h.hexdigest()
 
 
-def get_all_product_list():
+def get_all_product_list(self):
     secret_key = "e3af7bf6e342236e7422c491e417d6a1c0a9ef07"
     headers = {
     'x-tts-access-token': 'ROW_9BV4eQAAAAAIAnt06Rs72wGgf6fjXxs7fHqUFvgihDRdTFH8GjesuwUeRUFEeOxBNAfk_fSJreRwBC_YQ3tF9NO6V8BGH-YHI-Vl7-vrtTwRmzMaubtnTWCrG4sM28hold1VVZ_U8L2GOMiFWlx0uhxcw9-C4SbWEIhnh0obfun9GPgI5NULWw'

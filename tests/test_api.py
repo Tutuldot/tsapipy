@@ -28,10 +28,15 @@ def test_getsku():
     s = Product()
     assert len(s.getSKU([ "1729887427421964504"])) > 0
 
-
-    
-
-def test_getproductinfo():
+def test_getproductdetails():
     s = Product()
-    assert len(s.getProduct("1729831045943560408")) > 0
+    assert len(s.getProductDetails("1729831045943560408")) >= 1
+
+
+def test_getallproductlist():
+    s = Product()
+    assert len(s.get_all_product_list()) >= 1
+
+
+
 
