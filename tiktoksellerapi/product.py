@@ -1,15 +1,8 @@
-import hashlib
-import hmac
-import io
-import time
-import urllib.parse
-from typing import Any, Tuple
-from http import client as http_client
+
 import requests
+from http import client as http_client
+import time
 import json
-from math import radians, cos, sin, asin, sqrt
-from dotenv import load_dotenv
-import os
 from tiktoksellerapi.api import API
 
 class Product:
