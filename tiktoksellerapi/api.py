@@ -23,6 +23,9 @@ class API:
         self.app_key = os.getenv("APP_KEY")
         self.refresh_token = os.getenv("REFRESH_TOKEN")
         self.shop_cipher = os.getenv("SHOP_CIPHER")
+    
+    def getAPIURL(self):
+        return "https://open-api.tiktokglobalshop.com"
 
     def getShopCipher(self):
         return self.shop_cipher
@@ -99,5 +102,8 @@ class API:
     'x-tts-access-token': self.access_token
         ,'Content-Type': 'application/json'    
     }
+
+    def perform_refresh_token(self):
+        return True
 
 

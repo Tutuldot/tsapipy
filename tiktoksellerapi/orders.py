@@ -17,7 +17,7 @@ class Orders:
     def __init__(self):
         api = API()
         self.api = api
-        self.apiUrl = "https://open-api.tiktokglobalshop.com"
+   
         
 
     def getOrders(self,skuids,version="202309",page_size = 10):
@@ -35,7 +35,7 @@ class Orders:
         signature = self.api.cal_sign(req2)
     
 
-        url = self.apiUrl + "/order/" + version +"/orders/search"
+        url = self.api.getAPIURL() + "/order/" + version +"/orders/search"
         params = {
             "app_key": self.api.getAppKey(),
             "shop_cipher" : self.api.getShopCipher(),

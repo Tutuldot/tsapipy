@@ -1,0 +1,10 @@
+
+{"code":0,"message":"success","data":{"access_token":"ROW_-EqFBQAAAAAIAnt06Rs72wGgf6fjXxs7fHqUFvgihDRdTFH8GjesuwUeRUFEeOxBNAfk_fSJreRwBC_YQ3tF9NO6V8BGH-YHI-Vl7-vrtTwRmzMaubtnTUKuufSfCC9rdtAT57ogAQJOUDDBggGm4TdiB86lCumlhG6qaz6wUUo6y3laCeS9lQ","access_token_expire_in":1708995500,"refresh_token":"ROW_iHhpUwAAAACuysMHCHOBOBKMyYu7ASP3nH0tnWb2qQ-2qNe_s31QOqCrbE1qmGsVtn9iSRWgeOM","refresh_token_expire_in":4826741702,"open_id":"G81WKgAAAACVv19UmbBsiwvrcCnnUP8CiTmUpq9kUx8BwVgkbk-_OA","seller_name":"MsMorningstar Jewels","seller_base_region":"PH","user_type":0},"request_id":"20240220005818214E900890D8E008CB8A"}
+
+
+
+# refresh auth
+https://auth.tiktok-shops.com/api/v2/token/refresh?app_key=6b57ikn775gaj&app_secret=e3af7bf6e342236e7422c491e417d6a1c0a9ef07&refresh_token=ROW_iHhpUwAAAACuysMHCHOBOBKMyYu7ASP3nH0tnWb2qQ-2qNe_s31QOqCrbE1qmGsVtn9iSRWgeOM&grant_type=refresh_token
+
+
+
