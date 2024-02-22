@@ -34,14 +34,7 @@ class Money:
     
 
         url = self.api.getAPIURL() + "/finance/" + version + "/statements"
-        params = {
-            "app_key": self.api.getAppKey(),
-            "shop_cipher" : self.api.getShopCipher(),
-            "sku_ids": skuids,
-            "sign": signature,
-            "timestamp": str(ts)
-        }
-
+      
         f_url = url + "?app_key=" + self.api.getAppKey() + "&sort_field=statement_time&payment_status=PROCESSING&shop_cipher=" + self.api.getShopCipher() + "&timestamp=" + str(ts) + "&sign=" + signature 
 
         response = requests.request("GET",f_url, headers = self.api.generate_headers())
@@ -70,14 +63,7 @@ class Money:
 
 
         url = self.api.getAPIURL() + "/finance/" + version + "/payments"
-        params = {
-            "app_key": self.api.getAppKey(),
-            "shop_cipher" : self.api.getShopCipher(),
-            "sku_ids": skuids,
-            "sign": signature,
-            "timestamp": str(ts)
-        }
-
+       
         f_url = url + "?app_key=" + self.api.getAppKey() + "&sort_field=create_time&shop_cipher=" + self.api.getShopCipher() + "&timestamp=" + str(ts) + "&sign=" + signature 
 
 

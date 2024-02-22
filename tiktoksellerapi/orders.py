@@ -36,13 +36,7 @@ class Orders:
     
 
         url = self.api.getAPIURL() + "/order/" + version +"/orders/search"
-        params = {
-            "app_key": self.api.getAppKey(),
-            "shop_cipher" : self.api.getShopCipher(),
-            "sku_ids": skuids,
-            "sign": signature,
-            "timestamp": str(ts)
-        }
+      
 
         f_url = url + "?app_key=" + self.api.getAppKey() +"&page_size="+ str(page_size) + "&shop_cipher=" + self.api.getShopCipher() + "&timestamp=" + str(ts) + "&sign=" + signature 
 

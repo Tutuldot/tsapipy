@@ -111,8 +111,6 @@ f_url = url + "?app_key=6b57ikn775gaj&shop_cipher=ROW_PH68hwAAAADLEA37wZU4K8Lufe
 print(f_url)
 
 
-
-
 response = requests.request("GET",f_url, headers = headers)
 # Check the response status code
 data = []
