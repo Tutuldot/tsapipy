@@ -171,6 +171,7 @@ def get_product_details(product_id:str):
         product_sub_category_name = ""
         product_sub_category_image = ""
         for sa in sku['sales_attributes']:
+            print(sa)
             if sa['name'] == 'Color':
                 product_sub_category_name = sa['value_name']
                 product_sub_category_image = sa['sku_img']

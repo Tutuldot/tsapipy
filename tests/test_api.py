@@ -36,6 +36,11 @@ def test_getproductdetails():
 def test_getallproductlist():
     s = Product()
     assert len(s.get_all_product_list()) >= 1
+    #assert True
+
+def test_getallproductlist2():
+    s = Product()
+    assert len(s.get_product_details("1729831045943560408")) >= 1
 
 
 
