@@ -101,17 +101,15 @@ class Product:
             print("Error: " + response.text)
         
         base_rec = []
-
+       
         p = data['data']
         title = p['title']
         status = p['status']
         description = p['description']
         product_category = ""
        
-        main_images = p['main_images'][0]
-        print("----------")
-        print(main_images)
-        print("----------")
+        main_images = p['main_images'][0]['urls'][0]
+        
         # get the product category
         for cc in p['category_chains']:
             if cc['is_leaf']:
@@ -120,6 +118,8 @@ class Product:
         skus = p['skus']
 
         #create entry for destination
+
+        final_skus = []
 
         for sku in skus:
            
@@ -131,10 +131,19 @@ class Product:
             product_sub_category_image = ""
             
             for sa in sku['sales_attributes']:
-                print(sa)       
+                    
                 if sa['name'] == 'Color':
+                    product_sub_category_image = None
                     product_sub_category_name = sa['value_name']
-                    product_sub_category_image = sa['sku_img']
+                    if 'sku_img' in sa:
+                        product_sub_category_image = sa['sku_img']
+                    else:
+                        product_sub_category_image = main_images
+
+                    if product_sub_category_image == '' or product_sub_category_image is None:
+                        product_sub_category_image = main_images
+
+                    print("img: {} ID: {}".format(product_sub_category_image,product_id))
 
             
             #calculate inventory from all warehouse
@@ -142,23 +151,25 @@ class Product:
                 product_quantity += inv['quantity']
 
             prd = {"sku":product_sku
+            ,"product_id": product_id
             , "name":title
             , "category": product_category
             , "qty" : product_quantity
             , "price": product_price
             , "currency" : product_currency
             , "sub_category_name": product_sub_category_name
-        # , 'sub_category_image': product_sub_category_image
+            , 'sub_category_image': product_sub_category_image
             }
             
-            return prd
+            final_skus.append(prd)
+        return final_skus
 
     def get_all_product_list(self, version="202312"):
         
         ts = int(time.time())
         req2 = http_client.HTTPMessage()
         req2.path = "/product/202312/products/search"
-        req2.query = "app_key=6b57ikn775gaj&timestamp=" + str(ts) + "&page_size=1&shop_cipher=ROW_PH68hwAAAADLEA37wZU4K8LufewN_8Gr&version=202312" 
+        req2.query = "app_key=6b57ikn775gaj&timestamp=" + str(ts) + "&page_size=100&shop_cipher=ROW_PH68hwAAAADLEA37wZU4K8LufewN_8Gr&version=202312" 
         req2.add_header("Content-type", "application/json")
         req2.set_payload("")
 
@@ -168,8 +179,8 @@ class Product:
         url = "https://open-api.tiktokglobalshop.com/product/202312/products/search"
         
 
-        f_url = url + "?app_key=6b57ikn775gaj&page_size=1&shop_cipher=ROW_PH68hwAAAADLEA37wZU4K8LufewN_8Gr&timestamp=" + str(ts) + "&sign=" + signature  + "&version=202312"
-        print(f_url)
+        f_url = url + "?app_key=6b57ikn775gaj&page_size=100&shop_cipher=ROW_PH68hwAAAADLEA37wZU4K8LufewN_8Gr&timestamp=" + str(ts) + "&sign=" + signature  + "&version=202312"
+        
         response = requests.post(f_url ,headers=self.api.generate_headers())
         # Check the response status code
         data = []
@@ -185,16 +196,19 @@ class Product:
         for j in d:
             title = j['title']
             id = j['id']
-            print("Title: {} ID: {}".format(title,id))
+            #print("Title: {} ID: {}".format(title,id))
             res = self.get_product_details(id)
+
+            for zz in res:
+                final_products.append(zz)
             
-            final_products.append(res)
+            
 
         #with open('output.json', 'w') as f:
         # Use the dump() method to write the list to the file in JSON format
         #   json.dump(final_products, f)
         #print("done")
 
-        return True
+        return final_products
         
 
