@@ -128,20 +128,24 @@ class Product:
             product_price = sku['price']['sale_price']
             product_currency = sku['price']['currency']
             product_sub_category_name = ""
-            product_sub_category_image = ""
+            product_sub_category_image = "NCA"
             
             for sa in sku['sales_attributes']:
                     
                 if sa['name'] == 'Color':
                     product_sub_category_image = None
                     product_sub_category_name = sa['value_name']
+
+                    product_sub_category_image = main_images
                     if 'sku_img' in sa:
                         product_sub_category_image = sa['sku_img']
                     else:
                         product_sub_category_image = main_images
+                else:
+                    product_sub_category_image = main_images
 
-                    if product_sub_category_image == '' or product_sub_category_image is None:
-                        product_sub_category_image = main_images
+                    
+                        
 
                     print("img: {} ID: {}".format(product_sub_category_image,product_id))
 
@@ -204,9 +208,9 @@ class Product:
             
             
 
-        #with open('output.json', 'w') as f:
+        with open('output.json', 'w') as f:
         # Use the dump() method to write the list to the file in JSON format
-        #   json.dump(final_products, f)
+           json.dump(final_products, f)
         #print("done")
 
         return final_products
