@@ -1,5 +1,18 @@
 # tsapipy
 
+to run test
+
+-- all test 
+
+python -m pytest tests/
+
+-- all test with logs
+
+python -m pytest -s tests/
+
+-- specific test
+
+python -m pytest -k test_getallpackagesbycreatedate tests/test_api.py
 
 sample .env file
 

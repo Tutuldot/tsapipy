@@ -2,6 +2,7 @@ from tiktoksellerapi.api import API
 from tiktoksellerapi.orders import  Orders
 from tiktoksellerapi.money import Money
 from tiktoksellerapi.product import Product
+from tiktoksellerapi.fulfillment import Fullfillment
 
 def test_connection():
     api = API()
@@ -41,6 +42,11 @@ def test_getallproductlist():
 def test_getallproductlist2():
     s = Product()
     assert len(s.get_product_details("1729831045943560408")) >= 1
+
+
+def test_getallpackagesbycreatedate():
+    s = Fullfillment()
+    assert len(s.getPackagesByCreateDate("1729831045943560408")) >= 1
 
 
 
