@@ -147,7 +147,7 @@ class Product:
                     
                         
 
-                    print("img: {} ID: {}".format(product_sub_category_image,product_id))
+                    #print("img: {} ID: {}".format(product_sub_category_image,product_id)) #display log
 
             
             #calculate inventory from all warehouse
@@ -168,7 +168,7 @@ class Product:
             final_skus.append(prd)
         return final_skus
 
-    def get_all_product_list(self, version="202312"):
+    def get_all_product_list(self, version="202312", write_output = False):
         
         ts = int(time.time())
         req2 = http_client.HTTPMessage()
@@ -207,11 +207,11 @@ class Product:
                 final_products.append(zz)
             
             
-
-        with open('output.json', 'w') as f:
-        # Use the dump() method to write the list to the file in JSON format
-           json.dump(final_products, f)
-        #print("done")
+        if write_output:
+            with open('output.json', 'w') as f:
+            # Use the dump() method to write the list to the file in JSON format
+                json.dump(final_products, f)
+            #print("done")
 
         return final_products
         

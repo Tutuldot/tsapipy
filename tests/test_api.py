@@ -2,7 +2,7 @@ from tiktoksellerapi.api import API
 from tiktoksellerapi.orders import  Orders
 from tiktoksellerapi.money import Money
 from tiktoksellerapi.product import Product
-from tiktoksellerapi.fulfillment import Fullfillment
+from tiktoksellerapi.fullfillment import Fullfillment
 
 def test_connection():
     api = API()
